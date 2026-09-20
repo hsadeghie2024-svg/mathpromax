@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>نتیجه آزمون | MathProMax</title>
+
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #7b1e3a;
+        }
+
+        .score {
+            text-align: center;
+            font-size: 42px;
+            font-weight: bold;
+            color: #7b1e3a;
+            margin: 25px 0;
+        }
+
+        .percent {
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .skill {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            background: #f8f8f8;
+        }
+
+        .skill-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .skill-info {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            width: 100%;
+            height: 12px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #7b1e3a;
+        }
+
+        .level {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .recommendation {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff4e5;
+            border-radius: 12px;
+            line-height: 2;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            padding: 14px;
+            background: #7b1e3a;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="box">
+
+        <h1>نتیجه آزمون تعیین سطح ریاضی</h1>
+
+        <div class="score">
+            {{ score }} از {{ total }}
+        </div>
+
+        <div class="percent">
+            درصد پاسخ‌های صحیح:
+            {% widthratio score total 100 %}٪
+        </div>
+
+        <h2>تحلیل مهارت‌های ریاضی</h2>
+
+        {% for skill, result in skill_results.items %}
+
+        <div class="skill">
+
+            <div class="skill-name">
+                {{ skill }}
+            </div>
+
+            <div class="skill-info">
+                پاسخ صحیح: {{ result.correct }} از {{ result.total }}
+                <br>
+                درصد موفقیت: {{ result.percentage }}٪
+            </div>
+
+            <div class="progress">
+                <div
+                    class="progress-bar"
+                    style="width: {{ result.percentage }}%;">
+                </div>
+            </div>
+
+            <div class="level">
+                سطح:
+                {{ result.level }}
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+        <div class="recommendation">
+
+            <h2>پیشنهاد آموزشی</h2>
+
+            {% if score >= 18 %}
+
+                سطح کلی شما بسیار خوب است.
+                پیشنهاد می‌شود روی مباحث پیشرفته‌تر و حل مسائل چالشی کار کنید.
+
+            {% elif score >= 15 %}
+
+                پایه ریاضی شما خوب است.
+                با تمرین هدفمند می‌توانید نقاط ضعف جزئی خود را برطرف کنید.
+
+            {% elif score >= 12 %}
+
+                بخشی از مباحث نیاز به تقویت دارد.
+                پیشنهاد می‌شود ابتدا مهارت‌هایی را که سطح پایین‌تری دارند تمرین کنید.
+
+            {% elif score >= 8 %}
+
+                چندین مهارت پایه نیاز به تقویت دارد.
+                بهتر است آموزش و تمرین از مباحث پایه‌تر آغاز شود.
+
+            {% else %}
+
+                پیشنهاد می‌شود آموزش ریاضی از مباحث پایه شروع شود
+                و سپس به‌صورت مرحله‌ای به مباحث بالاتر برسید.
+
+            {% endif %}
+
+        </div>
+
+        <a href="{% url 'student_dashboard' %}" class="back">
+            بازگشت به داشبورد
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

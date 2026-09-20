@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>داشبورد دانش‌آموز | MathProMax</title>
+
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .header {
+            background: #7b1e3a;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            margin-top: 20px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            color: #7b1e3a;
+        }
+
+        .test-button {
+            display: block;
+            text-align: center;
+            background: #7b1e3a;
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .test-button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>داشبورد دانش‌آموز</h1>
+        <p>به سامانه MathProMax خوش آمدید</p>
+    </div>
+
+    <div class="card">
+
+        <h2>آزمون تعیین سطح ریاضی</h2>
+
+        <p>
+            در این بخش می‌توانید آزمون تعیین سطح ریاضی خود را انجام دهید.
+        </p>
+
+        <a href="{% url 'start_test' %}" class="test-button">
+    شروع آزمون
+</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+

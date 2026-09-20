@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>آزمون تعیین سطح ریاضی پایه سوم | MathProMax</title>
+
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .header {
+            background: #7b1e3a;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            line-height: 2;
+        }
+
+        .timer {
+            position: sticky;
+            top: 10px;
+            background: #fff;
+            border: 2px solid #7b1e3a;
+            color: #7b1e3a;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            z-index: 10;
+        }
+
+        .question {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .question h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .option {
+            display: block;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #f5f5f5;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: #7b1e3a;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        .submit-button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>آزمون تعیین سطح ریاضی</h1>
+        <p>پایه سوم ابتدایی</p>
+    </div>
+
+    <div class="info">
+        <strong>تعداد سؤالات:</strong> ۲۰ سؤال
+        <br>
+        <strong>زمان:</strong> ۳۰ دقیقه
+        <br>
+        <strong>ماشین حساب:</strong> مجاز نیست
+    </div>
+
+    <div class="timer">
+        زمان باقی‌مانده:
+        <span id="timer">30:00</span>
+    </div>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        <div class="question">
+            <h3>۱) عدد ۴۵۲ کدام است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q1" value="a">
+                الف) چهارصد و بیست و پنج
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="b">
+                ب) چهارصد و پنجاه و دو
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="c">
+                ج) چهارصد و بیست و دو
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="d">
+                د) پانصد و چهل و دو
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۲) رقم دهگان عدد ۳۷۶ کدام است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q2" value="a">
+                الف) ۳
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="b">
+                ب) ۷
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="c">
+                ج) ۶
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="d">
+                د) ۳۷
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۳) حاصل ۲۵ + ۳۷ چند است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q3" value="a">
+                الف) ۵۲
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="b">
+                ب) ۶۲
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="c">
+                ج) ۶۷
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="d">
+                د) ۷۲
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۴) حاصل ۸۰ − ۳۵ چند است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q4" value="a">
+                الف) ۴۵
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="b">
+                ب) ۴۰
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="c">
+                ج) ۵۵
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="d">
+                د) ۳۵
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۵) کدام عدد بزرگ‌تر است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q5" value="a">
+                الف) ۵۴۳
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="b">
+                ب) ۴۵۳
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="c">
+                ج) ۳۵۴
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="d">
+                د) ۵۳۴
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۶) حاصل ۶ × ۴ چند است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q6" value="a">
+                الف) ۱۸
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="b">
+                ب) ۲۰
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="c">
+                ج) ۲۴
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="d">
+                د) ۲۸
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۷) حاصل ۷ × ۵ چند است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q7" value="a">
+                الف) ۳۰
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="b">
+                ب) ۳۲
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="c">
+                ج) ۳۵
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="d">
+                د) ۴۰
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۸) حاصل ۳۶ ÷ ۶ چند است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q8" value="a">
+                الف) ۵
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="b">
+                ب) ۶
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="c">
+                ج) ۷
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q8" value="d">
+                د) ۸
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۹) حاصل ۴۸ ÷ ۸ چند است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q9" value="a">
+                الف) ۵
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="b">
+                ب) ۶
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="c">
+                ج) ۷
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q9" value="d">
+                د) ۸
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۱۰) علی ۱۵ مداد داشت و ۷ مداد دیگر خرید. حالا چند مداد دارد؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q10" value="a">
+                الف) ۲۰
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="b">
+                ب) ۲۱
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="c">
+                ج) ۲۲
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q10" value="d">
+                د) ۲۳
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۱۱) در یک کلاس ۲۴ دانش‌آموز هستند. اگر ۶ نفر غایب باشند، چند نفر حاضرند؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q11" value="a">
+                الف) ۱۶
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="b">
+                ب) ۱۷
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="c">
+                ج) ۱۸
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q11" value="d">
+                د) ۱۹
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۱۲) سارا ۳ بسته مداد دارد. در هر بسته ۵ مداد است. چند مداد دارد؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q12" value="a">
+                الف) ۱۵
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="b">
+                ب) ۱۲
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="c">
+                ج) ۱۰
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q12" value="d">
+                د) ۸
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۱۳) کدام شکل ۳ ضلع دارد؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q13" value="a">
+                الف) مربع
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="b">
+                ب) مستطیل
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="c">
+                ج) مثلث
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q13" value="d">
+                د) دایره
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۱۴) مربع چند ضلع دارد؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q14" value="a">
+                الف) ۳
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="b">
+                ب) ۵
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="c">
+                ج) ۴
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q14" value="d">
+                د) ۶
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۱۵) کدام شکل هیچ ضلع مستقیمی ندارد؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q15" value="a">
+                الف) مثلث
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="b">
+                ب) دایره
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="c">
+                ج) مربع
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q15" value="d">
+                د) مستطیل
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۱۶) یک ساعت چند دقیقه است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q16" value="a">
+                الف) ۳۰ دقیقه
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q16" value="b">
+                ب) ۴۵ دقیقه
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q16" value="c">
+                ج) ۶۰ دقیقه
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q16" value="d">
+                د) ۹۰ دقیقه
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۱۷) نیم ساعت چند دقیقه است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q17" value="a">
+                الف) ۱۵ دقیقه
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q17" value="b">
+                ب) ۲۰ دقیقه
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q17" value="c">
+                ج) ۳۰ دقیقه
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q17" value="d">
+                د) ۴۵ دقیقه
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۱۸) اگر ساعت ۳ باشد، دو ساعت بعد ساعت چند است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q18" value="a">
+                الف) ۴
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q18" value="b">
+                ب) ۵
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q18" value="c">
+                ج) ۶
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q18" value="d">
+                د) ۷
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۱۹) عدد بعدی را پیدا کن: ۲، ۴، ۶، ۸، ؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q19" value="a">
+                الف) ۹
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q19" value="b">
+                ب) ۱۰
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q19" value="c">
+                ج) ۱۱
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q19" value="d">
+                د) ۱۲
+            </label>
+        </div>
+
+        <div class="question">
+            <h3>۲۰) کدام عدد با بقیه متفاوت است؟</h3>
+
+            <label class="option">
+                <input type="radio" name="q20" value="a">
+                الف) ۲
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q20" value="b">
+                ب) ۳
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q20" value="c">
+                ج) ۴
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q20" value="d">
+                د) ۶
+            </label>
+        </div>
+
+        <button type="submit" class="submit-button">
+            پایان آزمون و ثبت پاسخ‌ها
+        </button>
+
+    </form>
+
+</div>
+
+<script>
+    let time = 30 * 60;
+
+    const timer = document.getElementById("timer");
+
+    const countdown = setInterval(function () {
+
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        timer.textContent = minutes + ":" + seconds;
+
+        if (time <= 0) {
+            clearInterval(countdown);
+            alert("زمان آزمون به پایان رسید.");
+        }
+
+        time--;
+
+    }, 1000);
+</script>
+
+</body>
+</html>
