@@ -528,17 +528,48 @@ def start_test(request):
     # -----------------------------
     if request.method == "GET":
 
-        questions = list(
-            Question.objects
-            .filter(
-                active=True,
-                grade=profile.grade
+        # انتخاب هوشمند سؤال‌ها بر اساس آخرین نتیجه آزمون
+        latest_result = (ExamResult.objects.filter(user=request.user).order_by("-created_at").first())
+
+        base_questions = Question.objects.filter(active=True, grade=profile.grade, track=profile.track)
+
+        if not base_questions.exists():
+            base_questions = Question.objects.filter(active=True, grade=profile.grade)
+
+        questions = []
+
+        if latest_result and latest_result.skill_results:
+            weak_topics = [
+                topic
+                for topic, data in latest_result.skill_results.items()
+                if float(data.get("percentage", 0)) < 50
+            ]
+
+            weak_questions = list(
+                base_questions.filter(topic__in=weak_topics).order_by("?")
             )
-            .filter(
-                track=profile.track
+
+            questions.extend(weak_questions[:8])
+
+            selected_ids = [question.id for question in questions]
+            remaining_questions = list(
+                base_questions.exclude(id__in=selected_ids).order_by("?")
             )
-            .order_by("?")[:20]
-        )
+
+            questions.extend(remaining_questions[:10 - len(questions)])
+
+        else:
+            questions = list(base_questions.order_by("?")[:10])
+
+        if len(questions) < 10:
+            selected_ids = [question.id for question in questions]
+            extra_questions = list(
+                Question.objects
+                .filter(active=True, grade=profile.grade)
+                .exclude(id__in=selected_ids)
+                .order_by("?")
+            )
+            questions.extend(extra_questions[:10 - len(questions)])
 
         # اگر برای رشته/گرایش سؤال پیدا نشد،
         # فقط بر اساس پایه جست‌وجو می‌کنیم.
