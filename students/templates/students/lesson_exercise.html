@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>تمرین ضرب و تقسیم | AIZAVA</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f4f8f9;
+            color: #24343b;
+        }
+
+        .header {
+            background: linear-gradient(
+                135deg,
+                #063f46,
+                #087f8c
+            );
+
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .brand {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+        }
+
+        .question {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        input {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            border: 1px solid #ccd6d8;
+            border-radius: 10px;
+            font-size: 18px;
+            direction: ltr;
+            text-align: center;
+        }
+
+        button {
+            border: none;
+            background: #087f8c;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 12px;
+            font-size: 17px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .result {
+            text-align: center;
+            background: #eef9f7;
+            border-right: 6px solid #16a085;
+        }
+
+        .score {
+            font-size: 42px;
+            font-weight: bold;
+            color: #087f8c;
+        }
+
+        .correct {
+            color: #16834d;
+            font-weight: bold;
+        }
+
+        .wrong {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #075761;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+    <div class="brand">
+        AIZAVA
+    </div>
+
+    <h1>
+        📝 تمرین ضرب و تقسیم
+    </h1>
+
+    <div>
+        پایه هفتم
+    </div>
+
+</div>
+
+
+<div class="container">
+
+{% if score is not None %}
+
+<div class="card result">
+
+    <h2>
+        🎉 نتیجه تمرین
+    </h2>
+
+    <div class="score">
+        {{ score }}٪
+    </div>
+
+    <p>
+        تمرین شما تصحیح شد.
+    </p>
+
+</div>
+
+{% endif %}
+
+
+<form method="post">
+
+    {% csrf_token %}
+
+
+    {% for exercise in exercises %}
+
+    <div class="card">
+
+        <div class="question">
+
+            {{ forloop.counter }}.
+            {{ exercise.question }}
+
+        </div>
+
+        <input
+            type="text"
+            name="answer_{{ forloop.counter0 }}"
+            placeholder="پاسخ خود را وارد کنید"
+            autocomplete="off"
+        >
+
+    </div>
+
+    {% endfor %}
+
+
+    <div style="text-align:center;">
+
+        <button type="submit">
+            ✅ ثبت پاسخ‌ها و تصحیح
+        </button>
+
+    </div>
+
+</form>
+
+
+{% if results %}
+
+<div class="card">
+
+    <h2>
+        📊 بررسی پاسخ‌ها
+    </h2>
+
+    {% for result in results %}
+
+    <div style="
+        padding:15px 0;
+        border-bottom:1px solid #eee;
+    ">
+
+        <strong>
+            {{ forloop.counter }}.
+            {{ result.question }}
+        </strong>
+
+        {% if result.is_correct %}
+
+        <div class="correct">
+            ✅ درست
+        </div>
+
+        {% else %}
+
+        <div class="wrong">
+            ❌ نادرست
+        </div>
+
+        <div>
+            پاسخ شما:
+            {{ result.user_answer|default:"بدون پاسخ" }}
+        </div>
+
+        <div>
+            پاسخ صحیح:
+            {{ result.correct_answer }}
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+
+<a
+    class="back"
+    href="{% url 'lesson_topic' slug %}"
+>
+    ← بازگشت به درسنامه
+</a>
+
+</div>
+
+</body>
+
+</html>

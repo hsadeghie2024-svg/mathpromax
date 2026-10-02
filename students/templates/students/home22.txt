@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AIZAVA | آموزش، هوش مصنوعی و خدمات دیجیتال</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 18, 31, 0.96);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: auto;
+            padding: 15px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: #19d4d5;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .menu a {
+            color: #e7f4f6;
+            font-size: 14px;
+            padding: 8px 13px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background: rgba(24, 199, 200, 0.12);
+            color: #19d4d5;
+        }
+
+        .menu .auth-btn {
+            border: 1px solid rgba(25,212,213,0.5);
+            margin-right: 4px;
+        }
+
+        .menu .register-btn {
+            background: linear-gradient(135deg, #ffd166, #f2b947);
+            color: #172033;
+            font-weight: bold;
+            border: none;
+        }
+
+        .menu .register-btn:hover {
+            color: #172033;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,209,102,0.25);
+        }
+
+        /* ================= HERO ================= */
+/* =========================================================
+   AIZAVA PREMIUM HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    padding: 75px 20px 70px;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(25,212,213,0.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(255,209,102,0.10),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #061923 0%,
+            #0b2735 48%,
+            #08202d 100%
+        );
+
+    color: white;
+
+    isolation: isolate;
+}
+
+
+/* نورهای تزئینی */
+
+.hero::before,
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+.hero::before {
+    width: 420px;
+    height: 420px;
+
+    top: -220px;
+    right: -120px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(25,212,213,0.18),
+            transparent 68%
+        );
+
+    filter: blur(8px);
+}
+
+
+.hero::after {
+    width: 350px;
+    height: 350px;
+
+    bottom: -190px;
+    left: -100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,209,102,0.12),
+            transparent 68%
+        );
+
+    filter: blur(10px);
+}
+
+
+/* =========================================================
+   DECORATIVE GRID
+   ========================================================= */
+
+.hero-content {
+    position: relative;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+
+    z-index: 2;
+}
+
+
+.hero-content::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -80px -120px;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 25%,
+            black 75%,
+            transparent
+        );
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO BADGE
+   ========================================================= */
+
+.hero-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 22px;
+
+    padding: 9px 18px;
+
+    border-radius: 50px;
+
+    background:
+        rgba(25,212,213,0.09);
+
+    border:
+        1px solid rgba(25,212,213,0.28);
+
+    color: #72e7e8;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.12);
+
+    backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.hero h1 {
+    margin: 0;
+
+    font-size: clamp(38px, 6vw, 68px);
+
+    line-height: 1.25;
+
+    font-weight: 950;
+
+    letter-spacing: -1.5px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 8px 35px rgba(0,0,0,0.28);
+}
+
+
+.hero h1 span {
+    display: inline-block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #19d4d5,
+            #70eeee,
+            #ffd166
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    color: transparent;
+
+    text-shadow: none;
+
+    position: relative;
+}
+
+
+/* خط نور زیر AIZAVA */
+
+.hero h1 span::after {
+    content: "";
+
+    position: absolute;
+
+    right: 5%;
+    left: 5%;
+
+    bottom: -5px;
+
+    height: 3px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #19d4d5,
+            #ffd166,
+            transparent
+        );
+
+    opacity: 0.65;
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+.hero > .hero-content > p {
+    max-width: 720px;
+
+    margin: 24px auto 0;
+
+    color: #c9e0e5;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+   ========================================================= */
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 32px;
+}
+
+
+.hero-buttons a {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 170px;
+
+    padding: 14px 24px;
+
+    border-radius: 15px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+/* دکمه اصلی */
+
+.hero-buttons a:first-child {
+    color: #06202a;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd166,
+            #f3bc51
+        );
+
+    box-shadow:
+        0 12px 28px rgba(255,209,102,0.20);
+}
+
+
+.hero-buttons a:first-child:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 18px 35px rgba(255,209,102,0.30);
+}
+
+
+/* دکمه دوم */
+
+.hero-buttons a:last-child {
+    color: #dffbfc;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    border:
+        1px solid rgba(25,212,213,0.30);
+
+    backdrop-filter: blur(10px);
+}
+
+
+.hero-buttons a:last-child:hover {
+    transform: translateY(-4px);
+
+    background:
+        rgba(25,212,213,0.10);
+
+    box-shadow:
+        0 15px 30px rgba(25,212,213,0.12);
+}
+
+
+/* =========================================================
+   HERO MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero {
+        padding:
+            55px
+            16px
+            55px;
+    }
+
+
+    .hero h1 {
+        font-size: 38px;
+
+        letter-spacing: -0.8px;
+    }
+
+
+    .hero > .hero-content > p {
+        font-size: 15px;
+
+        line-height: 1.9;
+    }
+
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        max-width: 330px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .hero-buttons a {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .hero {
+        padding-top: 45px;
+    }
+
+
+    .hero h1 {
+        font-size: 31px;
+    }
+
+
+    .hero-badge {
+        font-size: 12px;
+
+        padding:
+            8px
+            14px;
+    }
+}
+        /* ================= STATS ================= */
+
+        .hero-stats {
+            max-width: 900px;
+            margin: 45px auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 16px 10px;
+            backdrop-filter: blur(8px);
+        }
+
+        .stat strong {
+            display: block;
+            color: #19d4d5;
+            font-size: 24px;
+        }
+
+        .stat span {
+            font-size: 13px;
+            color: #d3e3e7;
+        }
+
+        /* ================= GENERAL ================= */
+
+        .section {
+            max-width: 1280px;
+            margin: auto;
+            padding: 85px 24px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #09263b;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #667788;
+        }
+
+        /* ================= SERVICES ================= */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            position: relative;
+            background: white;
+            padding: 32px 25px;
+            border-radius: 22px;
+            box-shadow: 0 10px 32px rgba(8,35,55,0.07);
+            border: 1px solid #e5edf2;
+            transition: 0.35s;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #19d4d5, #ffd166);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 42px rgba(8,35,55,0.14);
+        }
+
+        .icon {
+            font-size: 43px;
+            margin-bottom: 14px;
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            color: #073b50;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #667788;
+            font-size: 15px;
+            min-height: 75px;
+        }
+
+        .service-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #008c95;
+            font-weight: bold;
+        }
+
+        .service-link:hover {
+            color: #00636a;
+        }
+
+        /* ================= VARTOSH ================= */
+
+        .vartosh {
+            background:
+                radial-gradient(circle at top right, rgba(24,199,200,0.14), transparent 30%),
+                linear-gradient(135deg, #071c30, #073f4c);
+            color: white;
+            border-radius: 30px;
+            padding: 68px 40px;
+            text-align: center;
+            box-shadow: 0 22px 55px rgba(5,30,45,0.2);
+        }
+
+        .vartosh h2 {
+            font-size: 40px;
+            color: #19d4d5;
+            margin-bottom: 15px;
+        }
+
+        .vartosh p {
+            max-width: 780px;
+            margin: auto;
+            color: #d5e7eb;
+            font-size: 17px;
+        }
+
+        .vartosh-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .vartosh-item {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.07);
+            padding: 20px 10px;
+            border-radius: 15px;
+        }
+
+        /* ================= LEARNING ================= */
+
+        .learning-path {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .learning-step {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+            border: 1px solid #e9eef2;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #008c95, #18c7c8);
+            color: white;
+            font-weight: bold;
+        }
+
+        .learning-step h3 {
+            color: #073b50;
+            margin-bottom: 8px;
+        }
+
+        /* ================= ACCOUNT ================= */
+
+        .account-box {
+            background:
+                radial-gradient(circle at top left, rgba(255,209,102,0.14), transparent 30%),
+                linear-gradient(135deg, #fff8df, #ffffff);
+            border: 1px solid #f0df9c;
+            border-radius: 25px;
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        .account-box h2 {
+            color: #6b214f;
+            margin-bottom: 15px;
+            font-size: 31px;
+        }
+
+        .account-box p {
+            max-width: 760px;
+            margin: auto auto 25px;
+            color: #667788;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            text-align: center;
+            background:
+                linear-gradient(135deg, #007f88, #00a6a9);
+            color: white;
+            padding: 75px 25px;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            margin-bottom: 25px;
+            color: #e7ffff;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #061827;
+            color: #a9c0c9;
+            padding: 48px 25px 25px;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-logo {
+            color: white;
+            font-size: 29px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo span {
+            color: #19d4d5;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        footer a {
+            display: block;
+            color: #a9c0c9;
+            margin: 6px 0;
+        }
+
+        footer a:hover {
+            color: #ffd166;
+        }
+
+        .copyright {
+            max-width: 1280px;
+            margin: 35px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .services {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .vartosh-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .learning-path {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .nav-container {
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .menu {
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 620px;
+                padding: 75px 18px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .services,
+            .learning-path,
+            .vartosh-features {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .section {
+                padding: 65px 18px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .menu a {
+                font-size: 13px;
+                padding: 7px 9px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="nav-container">
+
+        <a href="/" class="logo">
+            AI<span>ZAVA</span>
+        </a>
+
+        <nav class="menu">
+
+            <a href="/">خانه</a>
+            <a href="#services">خدمات</a>
+            <a href="#education">آموزش</a>
+            <a href="#vartosh">وارتوش AI</a>
+            <a href="#realestate">املاک</a>
+            <a href="#auction">حراجی</a>
+            <a href="#cyber">کافی‌نت</a>
+
+            {% if request.user.is_authenticated %}
+
+                <a href="{% url 'student_dashboard' %}" class="auth-btn">
+                    داشبورد
+                </a>
+
+                <a href="{% url 'student_profile' %}" class="auth-btn">
+                    👤 پروفایل من
+                </a>
+
+            {% else %}
+
+                <a href="{% url 'student_login' %}" class="auth-btn">
+                    🔐 ورود
+                </a>
+
+                <a href="{% url 'register_student' %}" class="register-btn">
+                    ✨ ثبت‌نام
+                </a>
+
+            {% endif %}
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+<div class="hero-profile">
+
+    <div class="hero-photo-card">
+
+        <img
+            src="/static/students/images/habib.jpg"
+            alt="حبیب صادقی"
+            class="hero-profile-image"
+        >
+
+        <div class="hero-photo-badge">
+            AIZAVA
+        </div>
+
+    </div>
+
+    <div class="hero-profile-text">
+
+        <div class="hero-profile-kicker">
+            مدرس • برنامه‌نویس • هوش مصنوعی
+        </div>
+
+        <h2>حبیب صادقی</h2>
+
+        <p>
+            دبیر ریاضی، برنامه‌نویس کامپیوتر و متخصص هوش مصنوعی
+        </p>
+
+        <div class="hero-profile-tags">
+
+            <span>📐 آموزش ریاضی</span>
+            <span>🐍 Python</span>
+            <span>🤖 هوش مصنوعی</span>
+
+        </div>
+
+    </div>
+
+</div>
+        <div class="hero-badge">
+            🚀 آینده آموزش و خدمات دیجیتال
+        </div>
+
+        <h1>
+            به دنیای <span>AIZAVA</span> خوش آمدید
+        </h1>
+
+        <p>
+            آموزش، آزمون، هوش مصنوعی و خدمات دیجیتال
+            در یک پلتفرم هوشمند و یکپارچه
+        </p>
+
+        <div class="hero-buttons">
+
+            {% if request.user.is_authenticated %}
+
+                <a href="{% url 'student_dashboard' %}" class="btn btn-primary">
+                    👤 ورود به داشبورد
+                </a>
+
+                <a href="{% url 'student_profile' %}" class="btn btn-secondary">
+                    پروفایل من
+                </a>
+
+            {% else %}
+
+                <a href="{% url 'register_student' %}" class="btn btn-primary">
+                    📝 شروع رایگان
+                </a>
+
+                <a href="{% url 'student_login' %}" class="btn btn-secondary">
+                    🔐 ورود به حساب
+                </a>
+
+            {% endif %}
+
+        </div>
+
+        <div class="hero-stats">
+
+            <div class="stat">
+                <strong>📚</strong>
+                <span>آموزش هدفمند</span>
+            </div>
+
+            <div class="stat">
+                <strong>📝</strong>
+                <span>آزمون و تحلیل</span>
+            </div>
+
+            <div class="stat">
+                <strong>🤖</strong>
+                <span>وارتوش AI</span>
+            </div>
+
+            <div class="stat">
+                <strong>🌐</strong>
+                <span>اکوسیستم دیجیتال</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="services">
+
+    <div class="section-title">
+
+        <h2>اکوسیستم AIZAVA</h2>
+
+        <p>
+            مجموعه‌ای از خدمات آموزشی، هوشمند و دیجیتال در یکجا
+        </p>
+
+    </div>
+
+
+    <div class="services">
+
+
+        <div class="service-card" id="vartosh">
+
+            <div class="icon">🤖</div>
+
+            <h3>وارتوش AI</h3>
+
+            <p>
+                دستیار هوشمند AIZAVA برای آموزش،
+                پاسخ‌گویی، برنامه‌ریزی، تحلیل آزمون
+                و کمک در کارهای دیجیتال.
+            </p>
+
+            <a href="#" class="service-link">
+                ورود به وارتوش ←
+            </a>
+
+        </div>
+
+
+        <div class="service-card" id="education">
+
+            <div class="icon">🎓</div>
+
+            <h3>آموزش AIZAVA</h3>
+
+            <p>
+                آموزش ریاضی، Python،
+                برنامه‌نویسی و هوش مصنوعی
+                از پایه تا سطوح پیشرفته.
+            </p>
+
+            <a href="#learning" class="service-link">
+                مشاهده مسیر آموزش ←
+            </a>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <div class="icon">📝</div>
+
+            <h3>آزمون تعیین سطح</h3>
+
+            <p>
+                آزمون آنلاین، محاسبه نتیجه،
+                تحلیل نقاط قوت و ضعف
+                و مسیر یادگیری شخصی.
+            </p>
+
+            <a href="{% url 'register_student' %}" class="service-link">
+                شروع آزمون رایگان ←
+            </a>
+
+        </div>
+
+
+        <div class="service-card" id="realestate">
+
+            <div class="icon">🏠</div>
+
+            <h3>AIZAVA املاک</h3>
+
+            <p>
+                بستری برای معرفی و جست‌وجوی ملک،
+                زمین، آپارتمان، ویلا، مغازه
+                و فرصت‌های ملکی آینده.
+            </p>
+
+            <a href="#" class="service-link">
+                ورود به املاک ←
+            </a>
+
+        </div>
+
+
+        <div class="service-card" id="auction">
+
+            <div class="icon">🔨</div>
+
+            <h3>AIZAVA حراجی</h3>
+
+            <p>
+                بستری برای معرفی کالاها و خدمات،
+                مزایده و فرصت‌های خرید و فروش
+                در اکوسیستم آینده AIZAVA.
+            </p>
+
+            <a href="#" class="service-link">
+                مشاهده حراجی ←
+            </a>
+
+        </div>
+
+
+        <div class="service-card" id="cyber">
+
+            <div class="icon">💻</div>
+
+            <h3>AIZAVA کافی‌نت</h3>
+
+            <p>
+                خدمات اینترنتی، ثبت‌نام‌ها،
+                خدمات دانش‌آموزی، تایپ، چاپ،
+                اسکن و خدمات دیجیتال.
+            </p>
+
+            <a href="#" class="service-link">
+                خدمات کافی‌نت ←
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="vartosh">
+
+        <h2>🤖 وارتوش AI</h2>
+
+        <p>
+            دستیار هوشمند AIZAVA؛
+            یک همراه دیجیتال برای یادگیری،
+            حل مسئله، برنامه‌ریزی و استفاده
+            هوشمندانه از فناوری.
+        </p>
+
+
+        <div class="vartosh-features">
+
+            <div class="vartosh-item">
+                📚
+                <br>
+                آموزش هوشمند
+            </div>
+
+            <div class="vartosh-item">
+                🧠
+                <br>
+                حل و تحلیل مسئله
+            </div>
+
+            <div class="vartosh-item">
+                📊
+                <br>
+                تحلیل آزمون
+            </div>
+
+            <div class="vartosh-item">
+                ⚙️
+                <br>
+                کمک در کارهای دیجیتال
+            </div>
+
+        </div>
+
+        <br>
+
+        <a href="#" class="btn btn-primary">
+            ورود به وارتوش AI
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="section" id="learning">
+
+    <div class="section-title">
+
+        <h2>مسیر یادگیری AIZAVA</h2>
+
+        <p>
+            یادگیری مرحله‌به‌مرحله و هدفمند
+        </p>
+
+    </div>
+
+
+    <div class="learning-path">
+
+        <div class="learning-step">
+
+            <div class="step-number">۱</div>
+
+            <h3>ارزیابی</h3>
+
+            <p>
+                شناخت سطح فعلی و نقاط نیازمند تقویت
+            </p>
+
+        </div>
+
+
+        <div class="learning-step">
+
+            <div class="step-number">۲</div>
+
+            <h3>یادگیری</h3>
+
+            <p>
+                آموزش متناسب با سطح و هدف دانش‌آموز
+            </p>
+
+        </div>
+
+
+        <div class="learning-step">
+
+            <div class="step-number">۳</div>
+
+            <h3>تمرین</h3>
+
+            <p>
+                حل تمرین و آزمون برای تثبیت آموخته‌ها
+            </p>
+
+        </div>
+
+
+        <div class="learning-step">
+
+            <div class="step-number">۴</div>
+
+            <h3>پیشرفت</h3>
+
+            <p>
+                تحلیل عملکرد و حرکت به سطح بعدی
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="account-box">
+
+        <h2>👤 یک حساب کاربری برای تمام AIZAVA</h2>
+
+        <p>
+            با یک حساب کاربری به آموزش، آزمون،
+            وارتوش AI و سایر خدمات AIZAVA دسترسی خواهید داشت.
+        </p>
+
+        {% if request.user.is_authenticated %}
+
+            <a href="{% url 'student_dashboard' %}" class="btn btn-primary">
+                ورود به داشبورد
+            </a>
+
+        {% else %}
+
+            <a href="{% url 'register_student' %}" class="btn btn-primary">
+                ✨ ایجاد حساب کاربری
+            </a>
+
+            <a href="{% url 'student_login' %}" class="btn btn-secondary">
+                🔐 ورود به حساب
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<section class="cta">
+
+    <h2>
+        اولین قدم را همین امروز بردارید
+    </h2>
+
+    <p>
+        سطح خود را بسنجید و وارد مسیر یادگیری AIZAVA شوید.
+    </p>
+
+    <a href="{% url 'register_student' %}" class="btn btn-primary">
+        🚀 شروع رایگان
+    </a>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+
+            <div class="footer-logo">
+                AI<span>ZAVA</span>
+            </div>
+
+            <p>
+                AIZAVA؛ آموزش، هوش مصنوعی و خدمات دیجیتال
+                در یک اکوسیستم یکپارچه.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>دسترسی سریع</h3>
+
+            <a href="/">خانه</a>
+            <a href="#education">آموزش</a>
+            <a href="#vartosh">وارتوش AI</a>
+            <a href="{% url 'register_student' %}">آزمون</a>
+            <a href="{% url 'student_login' %}">ورود</a>
+
+        </div>
+
+
+        <div>
+
+            <h3>خدمات آینده</h3>
+
+            <a href="#realestate">AIZAVA املاک</a>
+            <a href="#auction">AIZAVA حراجی</a>
+            <a href="#cyber">AIZAVA کافی‌نت</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 AIZAVA — تمامی حقوق محفوظ است
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>

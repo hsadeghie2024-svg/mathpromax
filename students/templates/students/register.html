@@ -1,82 +1,352 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ثبت‌نام دانش‌آموز | MathProMax</title>
+
+    <title>ثبت‌نام در AIZAVA</title>
 
     <style>
-        body {
-            font-family: Tahoma, sans-serif;
-            background: #f4f6f8;
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            min-height: 100vh;
+            padding: 30px 15px;
+
+            background:
+                radial-gradient(circle at top right, rgba(24,199,200,0.16), transparent 30%),
+                radial-gradient(circle at bottom left, rgba(255,209,102,0.10), transparent 28%),
+                linear-gradient(135deg, #061827, #0a3448);
+        }
+
+        .page {
+            width: 100%;
+            max-width: 620px;
+            margin: auto;
+        }
+
+        .brand {
+            text-align: center;
+            color: white;
+            margin-bottom: 18px;
+        }
+
+        .brand-logo {
+            font-size: 34px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .brand-logo span {
+            color: #18c7c8;
+        }
+
+        .brand-text {
+            margin-top: 6px;
+            color: #c9dde2;
+            font-size: 13px;
         }
 
         .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.98);
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow:
+                0 25px 60px rgba(0,0,0,0.25),
+                0 0 0 1px rgba(255,255,255,0.08);
+        }
+
+        .register-icon {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0b9ca5, #18c7c8);
+            color: white;
+            font-size: 34px;
+
+            box-shadow: 0 12px 28px rgba(24,199,200,0.25);
         }
 
         h1 {
             text-align: center;
-            margin-bottom: 10px;
+            color: #073b50;
+            font-size: 29px;
+            margin-bottom: 8px;
         }
 
-        p {
+        .subtitle {
             text-align: center;
-            color: #666;
+            color: #687982;
+            font-size: 14px;
+            line-height: 1.9;
+            margin-bottom: 25px;
         }
 
         form {
-            margin-top: 25px;
+            margin-top: 10px;
         }
 
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0 15px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+        /* ================= DJANGO FORM ================= */
+
+        form p {
+            margin: 0 0 18px;
         }
 
-        button {
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            color: #173246;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        form input,
+        form select,
+        form textarea {
             width: 100%;
-            padding: 13px;
+            padding: 13px 14px;
+
+            border: 1px solid #d6e0e5;
+            border-radius: 12px;
+
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 14px;
+
+            background: #fbfdfe;
+            color: #172033;
+
+            transition: 0.3s;
+        }
+
+        form input:focus,
+        form select:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: #18c7c8;
+            box-shadow: 0 0 0 4px rgba(24,199,200,0.10);
+            background: white;
+        }
+
+        form ul.errorlist {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 8px;
+        }
+
+        form ul.errorlist li {
+            background: #fff0f0;
+            color: #a61b2b;
+            border: 1px solid #f3c4c9;
+            border-radius: 9px;
+            padding: 8px 10px;
+            font-size: 12px;
+        }
+
+        form .helptext {
+            display: block;
+            margin-top: 6px;
+            color: #7a8b92;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        form br {
+            display: none;
+        }
+
+        /* ================= SUBMIT ================= */
+
+        .register-button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+
             border: none;
-            border-radius: 8px;
-            background: #7b1e3a;
+            border-radius: 12px;
+
+            background: linear-gradient(135deg, #008c95, #18c7c8);
             color: white;
+
+            font-family: Tahoma, Arial, sans-serif;
             font-size: 16px;
+            font-weight: bold;
+
             cursor: pointer;
+            transition: 0.3s;
+
+            box-shadow: 0 10px 25px rgba(24,199,200,0.20);
         }
 
-        button:hover {
-            opacity: 0.9;
+        .register-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(24,199,200,0.30);
+        }
+
+        /* ================= LOGIN BOX ================= */
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0;
+            color: #9aa8ae;
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e4eaed;
+        }
+
+        .login-box {
+            text-align: center;
+            background: #f5fafb;
+            border: 1px solid #dfeff1;
+            padding: 18px;
+            border-radius: 14px;
+        }
+
+        .login-box p {
+            color: #63737c;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .login-link {
+            display: inline-block;
+            color: #008c95;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 8px 20px;
+            border: 1px solid #8acfd2;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .login-link:hover {
+            background: #008c95;
+            color: white;
+        }
+
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #c7dce1;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .home-link:hover {
+            color: white;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 28px 20px;
+                border-radius: 20px;
+            }
+
+            .brand-logo {
+                font-size: 29px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="page">
 
-    <h1>ثبت‌نام دانش‌آموز</h1>
+    <div class="brand">
 
-    <p>برای شرکت در آزمون تعیین سطح، اطلاعات خود را وارد کنید.</p>
+        <div class="brand-logo">
+            AI<span>ZAVA</span>
+        </div>
 
-    <form method="post">
-        {% csrf_token %}
+        <div class="brand-text">
+            آموزش، آزمون، هوش مصنوعی و خدمات دیجیتال
+        </div>
 
-        {{ form.as_p }}
+    </div>
 
-        <button type="submit">ثبت‌نام</button>
-    </form>
+
+    <div class="container">
+
+        <div class="register-icon">
+            ✨
+        </div>
+
+        <h1>
+            ایجاد حساب کاربری
+        </h1>
+
+        <p class="subtitle">
+            برای ورود به دنیای AIZAVA و شرکت در آزمون تعیین سطح،
+            اطلاعات خود را وارد کنید.
+        </p>
+
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="register-button">
+                ✨ ایجاد حساب کاربری
+            </button>
+
+        </form>
+
+
+        <div class="divider">
+            یا
+        </div>
+
+
+        <div class="login-box">
+
+            <p>
+                قبلاً در AIZAVA حساب ساخته‌اید؟
+            </p>
+
+            <a
+                href="{% url 'student_login' %}"
+                class="login-link">
+                🔐 ورود به حساب
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <a href="/" class="home-link">
+        ← بازگشت به صفحه اصلی AIZAVA
+    </a>
 
 </div>
 

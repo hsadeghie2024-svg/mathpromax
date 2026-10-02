@@ -4,84 +4,534 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>داشبورد دانش‌آموز | MathProMax</title>
+    <title>پنل کاربری | AIZAVA</title>
 
     <style>
-        body {
-            font-family: Tahoma, sans-serif;
-            background: #f4f6f8;
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(24,199,200,0.08), transparent 30%),
+                #f3f7fa;
+            color: #172033;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header {
+            background: linear-gradient(135deg, #061827, #0a3448);
+            color: white;
+            padding: 18px 25px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: #18c7c8;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .home-link,
+        .logout-link {
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 17px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .home-link:hover {
+            background: #18c7c8;
+            color: #062032;
+        }
+
+        /* دکمه پروفایل */
+        .profile-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            padding: 9px 18px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #12aeb7, #18c7c8);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 6px 18px rgba(24,199,200,0.28);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .profile-link:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #0f969e, #13b7b8);
+            box-shadow: 0 10px 24px rgba(24,199,200,0.38);
+        }
+
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.18);
+            border-radius: 50%;
+            font-size: 16px;
+        }
+
+        .logout-link {
+            background: #8b234f;
+            border-color: #8b234f;
+        }
+
+        .logout-link:hover {
+            background: #b52f65;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 1200px;
             margin: auto;
+            padding: 40px 20px 70px;
         }
 
-        .header {
-            background: #7b1e3a;
+        .welcome {
+            background: linear-gradient(135deg, #071c30, #073f4c);
             color: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(5,30,45,0.18);
+            margin-bottom: 30px;
+        }
+
+        .welcome h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .welcome h1 span {
+            color: #18c7c8;
+        }
+
+        .welcome p {
+            color: #d5e7eb;
+            font-size: 16px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-bottom: 30px;
         }
 
         .card {
             background: white;
-            margin-top: 20px;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            padding: 28px 23px;
+            border-radius: 20px;
+            border: 1px solid #e4edf2;
+            box-shadow: 0 8px 30px rgba(8,35,55,0.07);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(8,35,55,0.13);
+        }
+
+        .icon {
+            font-size: 38px;
+            margin-bottom: 10px;
         }
 
         .card h2 {
-            color: #7b1e3a;
+            color: #073b50;
+            font-size: 21px;
+            margin-bottom: 10px;
         }
 
-        .test-button {
-            display: block;
-            text-align: center;
-            background: #7b1e3a;
+        .card p {
+            color: #697987;
+            font-size: 14px;
+            min-height: 55px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            background: #008c95;
             color: white;
-            padding: 14px;
-            border-radius: 8px;
-            text-decoration: none;
-            margin-top: 20px;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
-        .test-button:hover {
-            opacity: 0.9;
+        .button:hover {
+            background: #006f76;
+        }
+
+        .button.gold {
+            background: #d4a928;
+            color: #172033;
+        }
+
+        .button.gold:hover {
+            background: #bd951f;
+        }
+
+        .profile {
+            background: white;
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 8px 30px rgba(8,35,55,0.07);
+            margin-bottom: 30px;
+        }
+
+        .profile h2 {
+            color: #073b50;
+            margin-bottom: 20px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .profile-item {
+            background: #f5f8fa;
+            padding: 15px 18px;
+            border-radius: 12px;
+        }
+
+        .profile-item strong {
+            color: #008c95;
+        }
+
+        .future {
+            background: linear-gradient(135deg, #fff9e3, #ffffff);
+            border: 1px solid #f0df9c;
+            padding: 30px;
+            border-radius: 22px;
+        }
+
+        .future h2 {
+            color: #6b214f;
+            margin-bottom: 12px;
+        }
+
+        .future p {
+            color: #697987;
+        }
+
+        footer {
+            text-align: center;
+            background: #061827;
+            color: #9db4be;
+            padding: 25px;
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-inner {
+                flex-direction: column;
+            }
+
+            .header-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .welcome {
+                padding: 30px 20px;
+            }
+
+            .welcome h1 {
+                font-size: 25px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-link {
+                padding: 9px 15px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
+<header>
 
-    <div class="header">
-        <h1>داشبورد دانش‌آموز</h1>
-        <p>به سامانه MathProMax خوش آمدید</p>
+    <div class="header-inner">
+
+        <div class="logo">
+            AI<span>ZAVA</span>
+        </div>
+
+        <div class="header-buttons">
+
+            <a href="/" class="home-link">
+                🏠 صفحه اصلی
+            </a>
+
+            <a href="{% url 'student_profile' %}" class="profile-link">
+                <span class="profile-icon">👤</span>
+                پروفایل من
+            </a>
+
+            <a href="{% url 'student_logout' %}" class="logout-link">
+                🚪 خروج از حساب
+            </a>
+
+        </div>
+
     </div>
 
-    <div class="card">
+</header>
 
-        <h2>آزمون تعیین سطح ریاضی</h2>
+
+<main class="container">
+
+
+    <section class="welcome">
+
+        <h1>
+            سلام،
+            <span>{{ request.user.username }}</span>
+            👋
+        </h1>
 
         <p>
-            در این بخش می‌توانید آزمون تعیین سطح ریاضی خود را انجام دهید.
+            به پنل کاربری AIZAVA خوش آمدید.
+            اینجا مرکز دسترسی شما به خدمات AIZAVA است.
         </p>
 
-        <a href="{% url 'start_test' %}" class="test-button">
-    شروع آزمون
-</a>
+    </section>
 
-    </div>
 
-</div>
+    <section class="grid">
+
+
+        <div class="card">
+
+            <div class="icon">📝</div>
+
+            <h2>آزمون تعیین سطح</h2>
+
+            <p>
+                سطح ریاضی خود را بسنجید،
+                نتیجه را مشاهده کنید و نقاط نیازمند تقویت
+                را شناسایی کنید.
+            </p>
+
+            <a href="{% url 'start_test' %}" class="button gold">
+                شروع آزمون
+            </a>
+
+            <a href="{% url 'exam_history' %}" class="button">
+                📊 سابقه آزمون‌ها
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🤖</div>
+
+            <h2>وارتوش AI</h2>
+
+            <p>
+                دستیار هوشمند AIZAVA برای
+                یادگیری، حل مسئله، برنامه‌ریزی
+                و کمک در کارهای دیجیتال.
+            </p>
+
+            <a href="#" class="button">
+                به‌زودی
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🎓</div>
+
+            <h2>آموزش AIZAVA</h2>
+
+            <p>
+                ریاضی، Python،
+                برنامه‌نویسی و هوش مصنوعی
+                در مسیرهای آموزشی آینده.
+            </p>
+
+            <a href="#" class="button">
+                مشاهده آموزش
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🏠</div>
+
+            <h2>AIZAVA املاک</h2>
+
+            <p>
+                جست‌وجو و معرفی
+                ملک، زمین، آپارتمان،
+                ویلا و مغازه.
+            </p>
+
+            <a href="#" class="button">
+                به‌زودی
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🔨</div>
+
+            <h2>AIZAVA حراجی</h2>
+
+            <p>
+                خرید و فروش و
+                حراج محصولات و خدمات
+                در اکوسیستم AIZAVA.
+            </p>
+
+            <a href="#" class="button">
+                به‌زودی
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">💻</div>
+
+            <h2>AIZAVA کافی‌نت</h2>
+
+            <p>
+                خدمات اینترنتی،
+                ثبت‌نام‌ها، چاپ،
+                اسکن و خدمات دیجیتال.
+            </p>
+
+            <a href="#" class="button">
+                به‌زودی
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+    <section class="profile">
+
+        <h2>👤 اطلاعات حساب شما</h2>
+
+        <div class="profile-grid">
+
+            <div class="profile-item">
+                <strong>نام کاربری:</strong>
+                {{ request.user.username }}
+            </div>
+
+            <div class="profile-item">
+                <strong>شماره تلفن:</strong>
+                {{ profile.phone|default:"ثبت نشده" }}
+            </div>
+
+            <div class="profile-item">
+                <strong>پایه تحصیلی:</strong>
+                {{ profile.grade|default:"ثبت نشده" }}
+            </div>
+
+            <div class="profile-item">
+                <strong>رشته:</strong>
+                {{ profile.track|default:"ثبت نشده" }}
+            </div>
+
+            <div class="profile-item">
+                <strong>شهر:</strong>
+                {{ profile.city|default:"ثبت نشده" }}
+            </div>
+
+            <div class="profile-item">
+                <strong>تاریخ عضویت:</strong>
+                {{ profile.created_at|date:"Y/m/d" }}
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="future">
+
+        <h2>🚀 AIZAVA در حال توسعه است</h2>
+
+        <p>
+            حساب کاربری شما قرار است در آینده
+            نقطه اتصال تمام خدمات AIZAVA باشد؛
+            از آموزش و آزمون گرفته تا وارتوش AI،
+            املاک، حراجی و کافی‌نت.
+        </p>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+    © 2026 AIZAVA — پنل کاربری
+</footer>
+
 
 </body>
 </html>
-

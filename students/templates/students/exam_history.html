@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>سابقه آزمون‌ها | AIZAVA</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: linear-gradient(135deg, #071b33, #0b2f4f);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 950px;
+            margin: 40px auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #21d4c8;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #c8d7df;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 22px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(10px);
+        }
+
+        .result-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+        }
+
+        .exam-number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #f4c95d;
+        }
+
+        .date {
+            color: #c8d7df;
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .score {
+            font-size: 20px;
+            font-weight: bold;
+            color: #21d4c8;
+            white-space: nowrap;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 35px 10px;
+            color: #d6e1e7;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 13px 22px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .main-btn {
+            background: #21d4c8;
+            color: #06202d;
+            font-weight: bold;
+        }
+
+        .main-btn:hover {
+            background: #35e2d6;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                width: 95%;
+                margin: 25px auto;
+            }
+
+            .title {
+                font-size: 23px;
+            }
+
+            .result-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .score {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="logo">AIZAVA</div>
+
+        <div class="title">
+            📊 سابقه آزمون‌های من
+        </div>
+
+        <div class="subtitle">
+            مشاهده آزمون‌ها و نتایج ثبت‌شده در حساب کاربری
+        </div>
+    </div>
+
+    <div class="card">
+
+        {% if results %}
+
+            {% for result in results %}
+
+                <div class="result-row">
+
+                    <div>
+                        <div class="exam-number">
+                            📝 آزمون شماره {{ forloop.counter }}
+                        </div>
+
+                        <div class="date">
+                            📅 {{ result.created_at|date:"Y/m/d - H:i" }}
+                        </div>
+                    </div>
+
+                    <div class="score">
+                        {{ result.score }} از {{ result.total }}
+                    </div>
+<a href="{% url 'exam_detail' result.id %}" class="btn">
+    🔍 مشاهده جزئیات
+</a>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty">
+                هنوز هیچ آزمونی برای حساب شما ثبت نشده است.
+            </div>
+
+        {% endif %}
+
+    </div>
+
+    <div class="buttons">
+
+        <a href="{% url 'student_dashboard' %}" class="btn main-btn">
+            🏠 بازگشت به داشبورد
+        </a>
+
+        <a href="{% url 'start_test' %}" class="btn">
+            📝 شرکت در آزمون جدید
+        </a>
+
+        <a href="{% url 'student_profile' %}" class="btn">
+            👤 پروفایل من
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

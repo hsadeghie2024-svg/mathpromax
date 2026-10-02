@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ lesson.title }} | AIZAVA</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f4f8f9;
+            color: #24343b;
+            line-height: 2;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #063f46, #087f8c);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .brand {
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            margin: 10px 0 5px;
+            font-size: 28px;
+        }
+
+        .grade {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 18px;
+        }
+
+        .intro {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+            border-right: 6px solid #0b8792;
+        }
+
+        .intro h2 {
+            margin-top: 0;
+            color: #075761;
+        }
+
+        .lesson-card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+        }
+
+        .lesson-card h2 {
+            color: #075761;
+            margin-top: 0;
+        }
+
+        .example {
+            background: #eef9f7;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            white-space: pre-line;
+            border-right: 4px solid #16a085;
+        }
+
+        .exercise-section {
+            background: #fffaf0;
+            border-radius: 18px;
+            padding: 25px;
+            margin-top: 30px;
+            border-right: 6px solid #e0a11a;
+        }
+
+        .exercise-section h2 {
+            color: #9a6810;
+            margin-top: 0;
+        }
+
+        .exercise {
+            background: white;
+            border-radius: 12px;
+            padding: 12px 18px;
+            margin: 10px 0;
+            font-size: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .progress-box {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+        }
+
+        .progress-bar {
+            height: 15px;
+            background: #e4eaec;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #0b8792, #20b486);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .button-primary {
+            background: #087f8c;
+            color: white;
+        }
+
+        .button-secondary {
+            background: #e8eeee;
+            color: #16444a;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 40px;
+            background: #063f46;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .brand {
+                font-size: 25px;
+            }
+
+            .lesson-card,
+            .intro,
+            .exercise-section,
+            .progress-box {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="brand">AIZAVA</div>
+
+    <div style="font-size: 42px; margin-top: 8px;">
+        {{ lesson.icon }}
+    </div>
+
+    <h1>{{ lesson.title }}</h1>
+
+    <div class="grade">
+        مسیر یادگیری هوشمند ریاضی | پایه {{ lesson.grade }}
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="intro">
+        <h2>📘 شروع درس</h2>
+
+        <p>
+            {{ lesson.intro }}
+        </p>
+    </div>
+
+
+    {% for section in lesson.sections %}
+
+    <div class="lesson-card">
+
+        <h2>{{ section.title }}</h2>
+
+        <p>
+            {{ section.text }}
+        </p>
+
+        <div class="example">
+            💡 مثال:
+
+            {{ section.example }}
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+
+    <div class="exercise-section">
+
+        <h2>📝 تمرین‌های درس</h2>
+
+        <p>
+            ابتدا خودت تمرین‌ها را حل کن، سپس در مرحله بعد پاسخ‌ها
+            و ارزیابی عملکردت را اضافه می‌کنیم.
+        </p>
+
+        {% for exercise in lesson.exercises %}
+
+        <div class="exercise">
+            {{ forloop.counter }}. {{ exercise }}
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <div class="progress-box">
+
+        <h2>📊 پیشرفت شما</h2>
+
+        <p>
+            وضعیت فعلی این درس: شروع نشده
+        </p>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+        <p style="text-align:center; margin-bottom:0;">
+            پیشرفت فعلی: ۰٪
+        </p>
+
+    </div>
+
+
+    <div class="buttons">
+
+        <a href="{% url 'student_dashboard' %}"
+           class="button button-secondary">
+            ← بازگشت به داشبورد
+        </a>
+
+       <a
+    href="{% url 'lesson_exercise' slug %}"
+    class="button button-primary"
+    >
+    شروع تمرین →
+    </a>
+
+    </div>
+
+</div>
+
+
+<div class="footer">
+    <strong>AIZAVA</strong>
+
+    <div>
+        آموزش هوشمند، آزمون و فناوری
+    </div>
+</div>
+
+</body>
+</html>

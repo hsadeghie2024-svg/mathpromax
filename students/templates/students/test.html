@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -5,93 +6,305 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>آزمون تعیین سطح ریاضی پایه سوم | MathProMax</title>
+    <title>آزمون هوشمند | AIZAVA</title>
 
     <style>
-        body {
-            font-family: Tahoma, sans-serif;
-            background: #f4f6f8;
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 30px 15px;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(0, 170, 160, 0.12), transparent 30%),
+                linear-gradient(135deg, #071f26, #0b3038 55%, #08242b);
+            color: #f4f8f9;
+            min-height: 100vh;
+            padding: 25px 15px 50px;
         }
 
         .container {
-            max-width: 850px;
+            max-width: 950px;
             margin: auto;
         }
 
+        /* Header */
+
         .header {
-            background: #7b1e3a;
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, #123f48, #0c2b32);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-radius: 24px;
+            padding: 30px 25px;
             text-align: center;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
             margin-bottom: 20px;
         }
 
-        .info {
-            background: white;
-            padding: 18px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            line-height: 2;
-        }
-
-        .timer {
-            position: sticky;
-            top: 10px;
-            background: #fff;
-            border: 2px solid #7b1e3a;
-            color: #7b1e3a;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 20px;
+        .brand {
+            color: #d4af37;
+            font-size: 15px;
             font-weight: bold;
-            margin-bottom: 20px;
-            z-index: 10;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            color: #c7d7da;
+            font-size: 15px;
+        }
+
+        /* Info */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 16px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .info-card .label {
+            display: block;
+            color: #a8c1c5;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .info-card .value {
+            color: #d4af37;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        /* Timer */
+
+        .timer-box {
+            position: sticky;
+            top: 12px;
+            z-index: 100;
+
+            background: rgba(7, 31, 38, 0.96);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 18px;
+
+            padding: 15px 20px;
+            margin-bottom: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(10px);
+        }
+
+        .timer-title {
+            color: #c8d8da;
+            font-size: 14px;
+        }
+
+        #timer {
+            color: #d4af37;
+            font-size: 25px;
+            font-weight: bold;
+            min-width: 75px;
+            text-align: center;
+        }
+
+        /* Progress */
+
+        .progress-box {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+        }
+
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #cbdcdf;
+            font-size: 13px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 9px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #00b7a8, #d4af37);
+            border-radius: 20px;
+            transition: width 0.3s ease;
+        }
+
+        /* Question */
 
         .question {
-            background: white;
-            padding: 22px;
-            border-radius: 12px;
+            background: #ffffff;
+            color: #172326;
+
+            border-radius: 20px;
+            padding: 25px;
+
             margin-bottom: 18px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+
+            border-right: 5px solid #00a99d;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #e8f7f5;
+            color: #087e75;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 14px;
         }
 
         .question h3 {
-            margin-top: 0;
-            color: #333;
+            font-size: 18px;
+            line-height: 2;
+            margin-bottom: 18px;
         }
 
+        /* Options */
+
         .option {
-            display: block;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            background: #f8fafb;
+            border: 2px solid #e4eaec;
+
+            padding: 13px 15px;
+            margin: 10px 0;
+
+            border-radius: 13px;
             cursor: pointer;
+
+            transition: all 0.2s ease;
         }
 
         .option:hover {
-            background: #f5f5f5;
+            border-color: #00a99d;
+            background: #eefaf8;
+            transform: translateX(-2px);
         }
+
+        .option input {
+            width: 18px;
+            height: 18px;
+            accent-color: #00a99d;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .option.selected {
+            border-color: #00a99d;
+            background: #eaf8f6;
+        }
+
+        .option-text {
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* Submit */
 
         .submit-button {
             width: 100%;
-            padding: 15px;
-            background: #7b1e3a;
-            color: white;
+            padding: 17px;
+
             border: none;
-            border-radius: 10px;
+            border-radius: 16px;
+
+            background: linear-gradient(135deg, #d4af37, #b89018);
+            color: #10272c;
+
+            font-family: inherit;
             font-size: 17px;
+            font-weight: bold;
+
             cursor: pointer;
-            margin: 20px 0;
+
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+
+            transition: all 0.2s ease;
+            margin-top: 10px;
         }
 
         .submit-button:hover {
-            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Footer */
+
+        .footer-note {
+            text-align: center;
+            color: #8da8ad;
+            font-size: 12px;
+            margin-top: 22px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 15px 10px 35px;
+            }
+
+            .header {
+                padding: 25px 18px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .question {
+                padding: 19px;
+            }
+
+            .question h3 {
+                font-size: 16px;
+            }
+
+            .timer-box {
+                top: 7px;
+            }
         }
     </style>
 </head>
@@ -100,517 +313,208 @@
 
 <div class="container">
 
+    <!-- Header -->
+
     <div class="header">
-        <h1>آزمون تعیین سطح ریاضی</h1>
-        <p>پایه سوم ابتدایی</p>
+
+        <div class="brand">
+            AIZAVA • آموزش هوشمند
+        </div>
+
+        <h1>
+            آزمون هوشمند تعیین سطح ریاضی
+        </h1>
+
+        <p>
+            به پرسش‌ها با دقت پاسخ دهید؛ نتیجه آزمون برای ساخت مسیر یادگیری شما استفاده می‌شود.
+        </p>
+
     </div>
 
-    <div class="info">
-        <strong>تعداد سؤالات:</strong> ۲۰ سؤال
-        <br>
-        <strong>زمان:</strong> ۳۰ دقیقه
-        <br>
-        <strong>ماشین حساب:</strong> مجاز نیست
+
+    <!-- Information -->
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <span class="label">تعداد سؤال</span>
+
+            <span class="value">
+                {{ questions|length }}
+            </span>
+        </div>
+
+
+        <div class="info-card">
+            <span class="label">پایه تحصیلی</span>
+
+            <span class="value">
+                {{ profile.grade|default:"هفتم" }}
+            </span>
+        </div>
+
+
+        <div class="info-card">
+            <span class="label">زمان آزمون</span>
+
+            <span class="value">
+                ۳۰ دقیقه
+            </span>
+        </div>
+
     </div>
 
-    <div class="timer">
-        زمان باقی‌مانده:
-        <span id="timer">30:00</span>
+
+    <!-- Timer -->
+
+    <div class="timer-box">
+
+        <span class="timer-title">
+            ⏱ زمان باقی‌مانده:
+        </span>
+
+        <span id="timer">
+            30:00
+        </span>
+
     </div>
 
-    <form method="post">
+
+    <!-- Progress -->
+
+    <div class="progress-box">
+
+        <div class="progress-top">
+
+            <span>
+                میزان پاسخ‌گویی
+            </span>
+
+            <span id="progressText">
+                ۰ از {{ questions|length }}
+            </span>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Test -->
+
+    <form method="post" id="testForm">
 
         {% csrf_token %}
 
-        <div class="question">
-            <h3>۱) عدد ۴۵۲ کدام است؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q1" value="a">
-                الف) چهارصد و بیست و پنج
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q1" value="b">
-                ب) چهارصد و پنجاه و دو
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q1" value="c">
-                ج) چهارصد و بیست و دو
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q1" value="d">
-                د) پانصد و چهل و دو
-            </label>
-        </div>
+        {% for question in questions %}
 
         <div class="question">
-            <h3>۲) رقم دهگان عدد ۳۷۶ کدام است؟</h3>
+
+            <div class="question-number">
+                سؤال {{ forloop.counter }}
+            </div>
+
+            <h3>
+                {{ question.question_text }}
+            </h3>
+
 
             <label class="option">
-                <input type="radio" name="q2" value="a">
-                الف) ۳
+
+                <input
+                    type="radio"
+                    name="question_{{ question.id }}"
+                    value="a">
+
+                <span class="option-text">
+                    الف) {{ question.option_a }}
+                </span>
+
             </label>
 
-            <label class="option">
-                <input type="radio" name="q2" value="b">
-                ب) ۷
-            </label>
 
             <label class="option">
-                <input type="radio" name="q2" value="c">
-                ج) ۶
+
+                <input
+                    type="radio"
+                    name="question_{{ question.id }}"
+                    value="b">
+
+                <span class="option-text">
+                    ب) {{ question.option_b }}
+                </span>
+
             </label>
 
+
             <label class="option">
-                <input type="radio" name="q2" value="d">
-                د) ۳۷
+
+                <input
+                    type="radio"
+                    name="question_{{ question.id }}"
+                    value="c">
+
+                <span class="option-text">
+                    ج) {{ question.option_c }}
+                </span>
+
             </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="question_{{ question.id }}"
+                    value="d">
+
+                <span class="option-text">
+                    د) {{ question.option_d }}
+                </span>
+
+            </label>
+
         </div>
 
-        <div class="question">
-            <h3>۳) حاصل ۲۵ + ۳۷ چند است؟</h3>
+        {% endfor %}
 
-            <label class="option">
-                <input type="radio" name="q3" value="a">
-                الف) ۵۲
-            </label>
 
-            <label class="option">
-                <input type="radio" name="q3" value="b">
-                ب) ۶۲
-            </label>
+        <button
+            type="submit"
+            class="submit-button">
 
-            <label class="option">
-                <input type="radio" name="q3" value="c">
-                ج) ۶۷
-            </label>
+            ثبت پاسخ‌ها و مشاهده نتیجه آزمون
 
-            <label class="option">
-                <input type="radio" name="q3" value="d">
-                د) ۷۲
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۴) حاصل ۸۰ − ۳۵ چند است؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q4" value="a">
-                الف) ۴۵
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q4" value="b">
-                ب) ۴۰
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q4" value="c">
-                ج) ۵۵
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q4" value="d">
-                د) ۳۵
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۵) کدام عدد بزرگ‌تر است؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q5" value="a">
-                الف) ۵۴۳
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q5" value="b">
-                ب) ۴۵۳
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q5" value="c">
-                ج) ۳۵۴
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q5" value="d">
-                د) ۵۳۴
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۶) حاصل ۶ × ۴ چند است؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q6" value="a">
-                الف) ۱۸
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q6" value="b">
-                ب) ۲۰
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q6" value="c">
-                ج) ۲۴
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q6" value="d">
-                د) ۲۸
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۷) حاصل ۷ × ۵ چند است؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q7" value="a">
-                الف) ۳۰
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q7" value="b">
-                ب) ۳۲
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q7" value="c">
-                ج) ۳۵
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q7" value="d">
-                د) ۴۰
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۸) حاصل ۳۶ ÷ ۶ چند است؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q8" value="a">
-                الف) ۵
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q8" value="b">
-                ب) ۶
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q8" value="c">
-                ج) ۷
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q8" value="d">
-                د) ۸
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۹) حاصل ۴۸ ÷ ۸ چند است؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q9" value="a">
-                الف) ۵
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q9" value="b">
-                ب) ۶
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q9" value="c">
-                ج) ۷
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q9" value="d">
-                د) ۸
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۱۰) علی ۱۵ مداد داشت و ۷ مداد دیگر خرید. حالا چند مداد دارد؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q10" value="a">
-                الف) ۲۰
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q10" value="b">
-                ب) ۲۱
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q10" value="c">
-                ج) ۲۲
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q10" value="d">
-                د) ۲۳
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۱۱) در یک کلاس ۲۴ دانش‌آموز هستند. اگر ۶ نفر غایب باشند، چند نفر حاضرند؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q11" value="a">
-                الف) ۱۶
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q11" value="b">
-                ب) ۱۷
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q11" value="c">
-                ج) ۱۸
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q11" value="d">
-                د) ۱۹
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۱۲) سارا ۳ بسته مداد دارد. در هر بسته ۵ مداد است. چند مداد دارد؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q12" value="a">
-                الف) ۱۵
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q12" value="b">
-                ب) ۱۲
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q12" value="c">
-                ج) ۱۰
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q12" value="d">
-                د) ۸
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۱۳) کدام شکل ۳ ضلع دارد؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q13" value="a">
-                الف) مربع
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q13" value="b">
-                ب) مستطیل
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q13" value="c">
-                ج) مثلث
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q13" value="d">
-                د) دایره
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۱۴) مربع چند ضلع دارد؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q14" value="a">
-                الف) ۳
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q14" value="b">
-                ب) ۵
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q14" value="c">
-                ج) ۴
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q14" value="d">
-                د) ۶
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۱۵) کدام شکل هیچ ضلع مستقیمی ندارد؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q15" value="a">
-                الف) مثلث
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q15" value="b">
-                ب) دایره
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q15" value="c">
-                ج) مربع
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q15" value="d">
-                د) مستطیل
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۱۶) یک ساعت چند دقیقه است؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q16" value="a">
-                الف) ۳۰ دقیقه
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q16" value="b">
-                ب) ۴۵ دقیقه
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q16" value="c">
-                ج) ۶۰ دقیقه
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q16" value="d">
-                د) ۹۰ دقیقه
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۱۷) نیم ساعت چند دقیقه است؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q17" value="a">
-                الف) ۱۵ دقیقه
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q17" value="b">
-                ب) ۲۰ دقیقه
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q17" value="c">
-                ج) ۳۰ دقیقه
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q17" value="d">
-                د) ۴۵ دقیقه
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۱۸) اگر ساعت ۳ باشد، دو ساعت بعد ساعت چند است؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q18" value="a">
-                الف) ۴
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q18" value="b">
-                ب) ۵
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q18" value="c">
-                ج) ۶
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q18" value="d">
-                د) ۷
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۱۹) عدد بعدی را پیدا کن: ۲، ۴، ۶، ۸، ؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q19" value="a">
-                الف) ۹
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q19" value="b">
-                ب) ۱۰
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q19" value="c">
-                ج) ۱۱
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q19" value="d">
-                د) ۱۲
-            </label>
-        </div>
-
-        <div class="question">
-            <h3>۲۰) کدام عدد با بقیه متفاوت است؟</h3>
-
-            <label class="option">
-                <input type="radio" name="q20" value="a">
-                الف) ۲
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q20" value="b">
-                ب) ۳
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q20" value="c">
-                ج) ۴
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q20" value="d">
-                د) ۶
-            </label>
-        </div>
-
-        <button type="submit" class="submit-button">
-            پایان آزمون و ثبت پاسخ‌ها
         </button>
 
     </form>
 
+
+    <div class="footer-note">
+
+        AIZAVA — آموزش، آزمون و فناوری هوشمند
+
+    </div>
+
 </div>
 
+
 <script>
+
+    /*
+     * ==========================
+     * TIMER
+     * ==========================
+     */
+
     let time = 30 * 60;
 
     const timer = document.getElementById("timer");
@@ -618,20 +522,183 @@
     const countdown = setInterval(function () {
 
         let minutes = Math.floor(time / 60);
+
         let seconds = time % 60;
 
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+        seconds = seconds < 10
+            ? "0" + seconds
+            : seconds;
 
-        timer.textContent = minutes + ":" + seconds;
+        timer.textContent =
+            minutes + ":" + seconds;
+
 
         if (time <= 0) {
+
             clearInterval(countdown);
-            alert("زمان آزمون به پایان رسید.");
+
+            document.getElementById("testForm").submit();
+
         }
 
         time--;
 
     }, 1000);
+
+
+    /*
+     * ==========================
+     * ANSWER SELECTION
+     * ==========================
+     */
+
+    const options =
+        document.querySelectorAll(".option");
+
+
+    options.forEach(function(option) {
+
+        const input =
+            option.querySelector("input");
+
+
+        input.addEventListener("change", function() {
+
+            const group =
+                document.querySelectorAll(
+                    'input[name="' + input.name + '"]'
+                );
+
+
+            group.forEach(function(radio) {
+
+                radio.closest(".option")
+                    .classList.remove("selected");
+
+            });
+
+
+            option.classList.add("selected");
+
+            updateProgress();
+
+        });
+
+    });
+
+
+    /*
+     * ==========================
+     * PROGRESS
+     * ==========================
+     */
+
+    function updateProgress() {
+
+        const questions =
+            document.querySelectorAll(".question");
+
+
+        let answered = 0;
+
+
+        questions.forEach(function(question) {
+
+            const checked =
+                question.querySelector(
+                    'input[type="radio"]:checked'
+                );
+
+
+            if (checked) {
+                answered++;
+            }
+
+        });
+
+
+        const total =
+            questions.length;
+
+
+        const percent =
+            total > 0
+                ? (answered / total) * 100
+                : 0;
+
+
+        document.getElementById(
+            "progressFill"
+        ).style.width = percent + "%";
+
+
+        document.getElementById(
+            "progressText"
+        ).textContent =
+            answered + " از " + total;
+
+    }
+
+
+    /*
+     * ==========================
+     * CONFIRM SUBMIT
+     * ==========================
+     */
+
+    document.getElementById("testForm")
+        .addEventListener("submit", function(event) {
+
+            const questions =
+                document.querySelectorAll(".question");
+
+
+            let answered = 0;
+
+
+            questions.forEach(function(question) {
+
+                if (
+                    question.querySelector(
+                        'input[type="radio"]:checked'
+                    )
+                ) {
+                    answered++;
+                }
+
+            });
+
+
+            const total =
+                questions.length;
+
+
+            if (
+                total > 0 &&
+                answered < total
+            ) {
+
+                const remaining =
+                    total - answered;
+
+
+                const message =
+                    "هنوز به " +
+                    remaining +
+                    " سؤال پاسخ نداده‌اید.\n\n" +
+                    "آیا می‌خواهید آزمون را همین حالا ثبت کنید؟";
+
+
+                if (!confirm(message)) {
+
+                    event.preventDefault();
+
+                }
+
+            }
+
+        });
+
 </script>
 
 </body>

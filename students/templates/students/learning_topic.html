@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ topic.title }} | AIZAVA</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f4f7f8;
+            color: #263238;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #063f46, #087f8c);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .brand {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            margin: 10px 0;
+            font-size: 28px;
+        }
+
+        .header p {
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .topic-icon {
+            font-size: 55px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .topic-title {
+            text-align: center;
+            color: #07545c;
+            font-size: 27px;
+            margin-bottom: 10px;
+        }
+
+        .grade {
+            text-align: center;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            text-align: center;
+            line-height: 2;
+            font-size: 17px;
+        }
+
+        .section-title {
+            color: #07545c;
+            border-right: 5px solid #e0a63c;
+            padding-right: 12px;
+            margin-bottom: 20px;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 22px;
+            text-align: center;
+            border: 1px solid #e5eeee;
+            transition: 0.2s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .section-card h3 {
+            color: #07545c;
+            margin: 10px 0;
+        }
+
+        .section-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .progress-box {
+            margin-top: 25px;
+        }
+
+        .progress-bar {
+            height: 18px;
+            background: #e1e8e9;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-value {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #087f8c, #e0a63c);
+            border-radius: 20px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #07545c;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        .back-button:hover {
+            background: #063f46;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 40px;
+            background: #063f46;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .topic-title {
+                font-size: 23px;
+            }
+
+            .topic-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="brand">AIZAVA</div>
+
+        <h1>{{ topic.title }}</h1>
+
+        <p>
+            مسیر یادگیری هوشمند ریاضی
+        </p>
+    </header>
+
+
+    <main class="container">
+
+        <!-- معرفی مبحث -->
+
+        <section class="topic-card">
+
+            <div class="topic-icon">
+                {{ topic.icon }}
+            </div>
+
+            <h2 class="topic-title">
+                {{ topic.title }}
+            </h2>
+
+            <div class="grade">
+                پایه {{ topic.grade }}
+            </div>
+
+            <p class="description">
+                {{ topic.description }}
+            </p>
+
+        </section>
+
+
+        <!-- مسیر یادگیری -->
+
+        <section class="topic-card">
+
+            <h2 class="section-title">
+                مسیر یادگیری
+            </h2>
+
+            <div class="sections">
+
+                <div class="section-card">
+                    <div class="section-icon">📘</div>
+                    <h3>۱. درسنامه</h3>
+                    <p>
+                        آموزش مفاهیم اصلی به زبان ساده و مرحله‌به‌مرحله.
+                    </p>
+                </div>
+
+
+                <div class="section-card">
+                    <div class="section-icon">💡</div>
+                    <h3>۲. مثال‌های حل‌شده</h3>
+                    <p>
+                        بررسی مثال‌های مختلف همراه با روش حل.
+                    </p>
+                </div>
+
+
+                <div class="section-card">
+                    <div class="section-icon">✏️</div>
+                    <h3>۳. تمرین</h3>
+                    <p>
+                        تمرین‌های هدفمند برای تثبیت یادگیری.
+                    </p>
+                </div>
+
+
+                <div class="section-card">
+                    <div class="section-icon">🎯</div>
+                    <h3>۴. آزمون</h3>
+                    <p>
+                        آزمون کوتاه برای سنجش میزان یادگیری.
+                    </p>
+                </div>
+
+
+                <div class="section-card">
+                    <div class="section-icon">📊</div>
+                    <h3>۵. پیشرفت</h3>
+                    <p>
+                        مشاهده میزان پیشرفت در این مبحث.
+                    </p>
+                </div>
+
+
+                <div class="section-card">
+                    <div class="section-icon">🔄</div>
+                    <h3>۶. مرحله بعد</h3>
+                    <p>
+                        پیشنهاد مسیر بعدی متناسب با سطح دانش‌آموز.
+                    </p>
+                </div>
+
+
+                <div class="section-card">
+                    <div class="section-icon">🎬</div>
+                    <h3>۷. ویدئو</h3>
+                    <p>
+                        ویدئوهای آموزشی مرتبط با این مبحث.
+                    </p>
+                </div>
+
+
+                <div class="section-card">
+                    <div class="section-icon">🧑‍🏫</div>
+                    <h3>۸. مشاوره</h3>
+                    <p>
+                        دریافت راهنمایی آموزشی و برنامه‌ریزی.
+                    </p>
+                </div>
+
+
+                <div class="section-card">
+                    <div class="section-icon">🤖</div>
+                    <h3>۹. وارتوش</h3>
+                    <p>
+                        پرسش و پاسخ هوشمند درباره این مبحث.
+                    </p>
+                </div>
+
+
+                <div class="section-card">
+                    <div class="section-icon">📞</div>
+                    <h3>۱۰. تماس با ما</h3>
+                    <p>
+                        ارتباط با تیم آموزشی AIZAVA.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- پیشرفت -->
+
+        <section class="topic-card">
+
+            <h2 class="section-title">
+                📊 پیشرفت شما
+            </h2>
+
+            <p>
+                هنوز فعالیتی در این مبحث ثبت نشده است.
+            </p>
+
+            <div class="progress-box">
+
+                <div class="progress-bar">
+                    <div class="progress-value"></div>
+                </div>
+
+            </div>
+
+            <p>
+                پیشرفت فعلی: <strong>۰٪</strong>
+            </p>
+
+        </section>
+
+
+        <div style="text-align:center;">
+
+            <a href="{% url 'student_dashboard' %}" class="back-button">
+                ← بازگشت به داشبورد
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <strong>AIZAVA</strong>
+
+        <div style="margin-top:10px;">
+            آموزش • آزمون • هوش مصنوعی
+        </div>
+
+        <div style="margin-top:10px;">
+            مسیر یادگیری هوشمند شما
+        </div>
+
+    </footer>
+
+</body>
+</html>

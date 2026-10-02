@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -5,101 +6,483 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>نتیجه آزمون | MathProMax</title>
+    <title>نتیجه آزمون | AIZAVA</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Tahoma, sans-serif;
-            background: #f4f6f8;
             margin: 0;
-            padding: 40px 20px;
+            padding: 30px 15px;
+            font-family: Tahoma, "Segoe UI", sans-serif;
+            color: #263238;
+            background:
+                radial-gradient(circle at top right, rgba(0, 137, 123, 0.10), transparent 30%),
+                radial-gradient(circle at bottom left, rgba(123, 30, 58, 0.08), transparent 30%),
+                linear-gradient(135deg, #eef7f6, #f9f4f6);
         }
 
         .container {
-            max-width: 800px;
+            width: 100%;
+            max-width: 1050px;
             margin: auto;
         }
 
         .box {
-            background: white;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 28px;
             padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.10);
         }
 
-        h1 {
-            text-align: center;
-            color: #7b1e3a;
-        }
+        /* HEADER */
 
-        .score {
+        .header {
             text-align: center;
-            font-size: 42px;
-            font-weight: bold;
-            color: #7b1e3a;
-            margin: 25px 0;
-        }
-
-        .percent {
-            text-align: center;
-            font-size: 18px;
-            color: #555;
             margin-bottom: 30px;
         }
 
+        .brand {
+            display: inline-block;
+            color: #00897b;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0;
+            color: #7b1e3a;
+            font-size: 31px;
+        }
+
+        .subtitle {
+            margin-top: 12px;
+            color: #607d8b;
+            line-height: 2;
+            font-size: 15px;
+        }
+
+        /* SCORE */
+
+        .score-card {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 35px 20px;
+            border-radius: 25px;
+            color: white;
+            background:
+                linear-gradient(135deg, #7b1e3a, #9d3154);
+            box-shadow: 0 14px 35px rgba(123, 30, 58, 0.25);
+            margin-bottom: 35px;
+        }
+
+        .score-card::before,
+        .score-card::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .score-card::before {
+            top: -100px;
+            right: -60px;
+        }
+
+        .score-card::after {
+            bottom: -120px;
+            left: -60px;
+        }
+
+        .score-label {
+            position: relative;
+            z-index: 1;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .score {
+            position: relative;
+            z-index: 1;
+            font-size: 54px;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+        .percent {
+            position: relative;
+            z-index: 1;
+            font-size: 18px;
+        }
+
+        /* PERFORMANCE */
+
+        .performance-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 22px;
+        }
+
+        .performance-item {
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            border-radius: 16px;
+            padding: 15px;
+        }
+
+        .performance-item span {
+            display: block;
+            font-size: 12px;
+            opacity: 0.8;
+            margin-bottom: 7px;
+        }
+
+        .performance-item strong {
+            font-size: 18px;
+        }
+
+        /* SECTION */
+
+        .section-title {
+            margin: 40px 0 20px;
+            padding-right: 13px;
+            border-right: 5px solid #00897b;
+            color: #263238;
+            font-size: 23px;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
         .skill {
-            margin-top: 20px;
-            padding: 18px;
-            border-radius: 12px;
-            background: #f8f8f8;
+            background: #fff;
+            border: 1px solid #e4e9eb;
+            border-radius: 20px;
+            padding: 23px;
+            box-shadow: 0 7px 22px rgba(0, 0, 0, 0.06);
+            transition: 0.25s;
+        }
+
+        .skill:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 13px 30px rgba(0, 0, 0, 0.10);
+        }
+
+        .skill-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
         }
 
         .skill-name {
-            font-size: 18px;
+            color: #7b1e3a;
+            font-size: 19px;
             font-weight: bold;
-            margin-bottom: 10px;
+        }
+
+        .skill-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 13px;
+            background: #e8f5f3;
+            font-size: 21px;
         }
 
         .skill-info {
-            color: #555;
-            margin-bottom: 10px;
+            margin-top: 17px;
+            color: #546e7a;
+            line-height: 2;
+            font-size: 14px;
         }
 
         .progress {
-            width: 100%;
             height: 12px;
-            background: #ddd;
-            border-radius: 10px;
+            margin: 16px 0 12px;
+            background: #e9edef;
+            border-radius: 20px;
             overflow: hidden;
         }
 
         .progress-bar {
             height: 100%;
-            background: #7b1e3a;
+            min-width: 0;
+            background: linear-gradient(90deg, #00897b, #26a69a);
+            border-radius: 20px;
         }
 
         .level {
-            margin-top: 10px;
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 20px;
+            background: #e8f5f3;
+            color: #00796b;
+            font-size: 13px;
             font-weight: bold;
         }
 
+        /* LEARNING PLAN */
+
         .recommendation {
-            margin-top: 30px;
-            padding: 20px;
-            background: #fff4e5;
-            border-radius: 12px;
+            margin-top: 40px;
+            padding: 28px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #fff9ef, #fff3df);
+            border: 1px solid #f0dfc0;
+        }
+
+        .recommendation h2 {
+            margin: 0;
+            color: #7b1e3a;
+            font-size: 24px;
+        }
+
+        .recommendation-intro {
+            margin: 13px 0 25px;
+            color: #6d4c41;
             line-height: 2;
         }
 
-        .back {
-            display: block;
+        .learning-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+        }
+
+        .learning-card {
+            background: white;
+            border: 1px solid #eadfe3;
+            border-radius: 21px;
+            padding: 23px;
+            box-shadow: 0 7px 22px rgba(0, 0, 0, 0.06);
+            transition: 0.25s;
+        }
+
+        .learning-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.11);
+        }
+
+        .learning-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .priority {
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #fdecef;
+            color: #b3264b;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .priority-icon {
+            font-size: 25px;
+        }
+
+        .learning-card h3 {
+            margin: 18px 0;
+            color: #7b1e3a;
+            font-size: 21px;
+        }
+
+        .learning-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat {
+            padding: 13px;
             text-align: center;
-            margin-top: 30px;
-            padding: 14px;
-            background: #7b1e3a;
+            background: #f7f9fa;
+            border-radius: 13px;
+        }
+
+        .stat span {
+            display: block;
+            color: #78909c;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        .stat strong {
+            color: #263238;
+            font-size: 15px;
+        }
+
+        .mini-progress {
+            height: 10px;
+            margin: 18px 0 22px;
+            background: #e9edef;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .mini-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00897b, #26a69a);
+            border-radius: 20px;
+        }
+
+        .steps-title {
+            margin-bottom: 12px;
+            color: #37474f;
+            font-weight: bold;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .step-number {
+            min-width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #e8f5f3;
+            color: #00796b;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .step-text {
+            color: #546e7a;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .learning-button {
+            width: 100%;
+            border: none;
+            margin-top: 20px;
+            padding: 13px;
+            border-radius: 12px;
+            background: #00897b;
             color: white;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .learning-button:hover {
+            background: #00796b;
+            transform: translateY(-2px);
+        }
+
+        .empty-plan {
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            color: #78909c;
+            text-align: center;
+        }
+
+        /* FOOTER BUTTONS */
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .action {
+            display: block;
+            padding: 15px;
+            border-radius: 13px;
+            text-align: center;
             text-decoration: none;
-            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .action-primary {
+            background: linear-gradient(135deg, #7b1e3a, #9d3154);
+            color: white;
+        }
+
+        .action-secondary {
+            background: #e8f5f3;
+            color: #00796b;
+        }
+
+        .action:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            color: #90a4ae;
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 15px 10px;
+            }
+
+            .box {
+                padding: 22px 15px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 23px;
+            }
+
+            .score {
+                font-size: 43px;
+            }
+
+            .performance-box {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .recommendation {
+                padding: 20px 15px;
+            }
+
+            .actions {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -110,85 +493,274 @@
 
     <div class="box">
 
-        <h1>نتیجه آزمون تعیین سطح ریاضی</h1>
+        <!-- HEADER -->
 
-        <div class="score">
-            {{ score }} از {{ total }}
-        </div>
+        <div class="header">
 
-        <div class="percent">
-            درصد پاسخ‌های صحیح:
-            {% widthratio score total 100 %}٪
-        </div>
-
-        <h2>تحلیل مهارت‌های ریاضی</h2>
-
-        {% for skill, result in skill_results.items %}
-
-        <div class="skill">
-
-            <div class="skill-name">
-                {{ skill }}
+            <div class="brand">
+                AIZAVA
             </div>
 
-            <div class="skill-info">
-                پاسخ صحیح: {{ result.correct }} از {{ result.total }}
-                <br>
-                درصد موفقیت: {{ result.percentage }}٪
+            <h1>
+                نتیجه آزمون و تحلیل آموزشی
+            </h1>
+
+            <div class="subtitle">
+                تحلیل هوشمند عملکرد شما و طراحی مسیر یادگیری شخصی‌سازی‌شده
             </div>
 
-            <div class="progress">
-                <div
-                    class="progress-bar"
-                    style="width: {{ result.percentage }}%;">
+        </div>
+
+
+        <!-- SCORE -->
+
+        <div class="score-card">
+
+            <div class="score-label">
+                نتیجه کلی آزمون
+            </div>
+
+            <div class="score">
+                {{ score }} از {{ total }}
+            </div>
+
+            <div class="percent">
+                درصد پاسخ‌های صحیح:
+                {% widthratio score total 100 %}٪
+            </div>
+
+            <div class="performance-box">
+
+                <div class="performance-item">
+                    <span>تعداد سؤالات</span>
+                    <strong>{{ total }}</strong>
                 </div>
-            </div>
 
-            <div class="level">
-                سطح:
-                {{ result.level }}
+                <div class="performance-item">
+                    <span>پاسخ صحیح</span>
+                    <strong>{{ score }}</strong>
+                </div>
+
+                <div class="performance-item">
+                    <span>تحلیل</span>
+                    <strong>هوشمند AIZAVA</strong>
+                </div>
+
             </div>
 
         </div>
 
-        {% endfor %}
+
+        <!-- SKILLS -->
+
+        <h2 class="section-title">
+            📊 تحلیل ۶ مهارت ریاضی
+        </h2>
+
+        <div class="skills">
+
+            {% for skill, result in skill_results.items %}
+
+            <div class="skill">
+
+                <div class="skill-top">
+
+                    <div class="skill-name">
+                        {{ skill }}
+                    </div>
+
+                    <div class="skill-icon">
+                        📐
+                    </div>
+
+                </div>
+
+                <div class="skill-info">
+
+                    پاسخ صحیح:
+                    <strong>{{ result.correct }}</strong>
+                    از
+                    <strong>{{ result.total }}</strong>
+
+                    <br>
+
+                    درصد موفقیت:
+                    <strong>{{ result.percentage }}٪</strong>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar"
+                        style="width: {{ result.percentage }}%;">
+                    </div>
+
+                </div>
+
+                <div class="level">
+                    سطح:
+                    {{ result.level }}
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="skill">
+                هنوز اطلاعات کافی برای تحلیل مهارت‌ها ثبت نشده است.
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- LEARNING PLAN -->
 
         <div class="recommendation">
 
-            <h2>پیشنهاد آموزشی</h2>
+            <h2>
+                🚀 مسیر یادگیری پیشنهادی AIZAVA
+            </h2>
 
-            {% if score >= 18 %}
+            <div class="recommendation-intro">
+                بر اساس عملکرد شما در آزمون، مهارت‌هایی که به تمرین بیشتری نیاز دارند
+                شناسایی شده‌اند. مسیر زیر برای تقویت مرحله‌به‌مرحله آن‌ها پیشنهاد می‌شود.
+            </div>
 
-                سطح کلی شما بسیار خوب است.
-                پیشنهاد می‌شود روی مباحث پیشرفته‌تر و حل مسائل چالشی کار کنید.
+            <div class="learning-cards">
 
-            {% elif score >= 15 %}
+                {% for plan in learning_plan %}
 
-                پایه ریاضی شما خوب است.
-                با تمرین هدفمند می‌توانید نقاط ضعف جزئی خود را برطرف کنید.
+                <div class="learning-card">
 
-            {% elif score >= 12 %}
+                    <div class="learning-card-header">
 
-                بخشی از مباحث نیاز به تقویت دارد.
-                پیشنهاد می‌شود ابتدا مهارت‌هایی را که سطح پایین‌تری دارند تمرین کنید.
+                        <div class="priority">
+                            اولویت {{ plan.priority }}
+                        </div>
 
-            {% elif score >= 8 %}
+                        <div class="priority-icon">
+                            🎯
+                        </div>
 
-                چندین مهارت پایه نیاز به تقویت دارد.
-                بهتر است آموزش و تمرین از مباحث پایه‌تر آغاز شود.
+                    </div>
 
-            {% else %}
+                    <h3>
+                        {{ plan.skill }}
+                    </h3>
 
-                پیشنهاد می‌شود آموزش ریاضی از مباحث پایه شروع شود
-                و سپس به‌صورت مرحله‌ای به مباحث بالاتر برسید.
+                    <div class="learning-stats">
 
-            {% endif %}
+                        <div class="stat">
+
+                            <span>
+                                عملکرد
+                            </span>
+
+                            <strong>
+                                {{ plan.percentage }}٪
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <span>
+                                سطح فعلی
+                            </span>
+
+                            <strong>
+                                {{ plan.level }}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mini-progress">
+
+                        <div
+                            class="mini-progress-bar"
+                            style="width: {{ plan.percentage }}%;">
+                        </div>
+
+                    </div>
+
+                    <div class="steps-title">
+                        🧭 مراحل پیشنهادی:
+                    </div>
+
+                    <div class="steps">
+
+                        {% for step in plan.steps %}
+
+                        <div class="step">
+
+                            <div class="step-number">
+                                {{ forloop.counter }}
+                            </div>
+
+                            <div class="step-text">
+                                {{ step }}
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                    <button
+                        class="learning-button"
+                        type="button">
+
+                        شروع یادگیری
+
+                    </button>
+
+                </div>
+
+                {% empty %}
+
+                <div class="empty-plan">
+                    هنوز اطلاعات کافی برای ساخت مسیر یادگیری وجود ندارد.
+                </div>
+
+                {% endfor %}
+
+            </div>
 
         </div>
 
-        <a href="{% url 'student_dashboard' %}" class="back">
-            بازگشت به داشبورد
-        </a>
+
+        <!-- ACTIONS -->
+
+        <div class="actions">
+
+            <a
+                href="{% url 'student_dashboard' %}"
+                class="action action-primary">
+
+                🏠 بازگشت به داشبورد
+
+            </a>
+
+            <a
+                href="{% url 'exam_history' %}"
+                class="action action-secondary">
+
+                📋 مشاهده تاریخچه آزمون‌ها
+
+            </a>
+
+        </div>
+
+
+        <div class="footer">
+            AIZAVA — آموزش هوشمند، آزمون هوشمند، مسیر یادگیری شخصی‌سازی‌شده
+        </div>
 
     </div>
 

@@ -5,123 +5,471 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ورود دانش‌آموز | MathProMax</title>
+    <title>ورود به AIZAVA</title>
 
     <style>
-        body {
-            font-family: Tahoma, sans-serif;
-            background: #f4f6f8;
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 60px 20px;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 15px;
+
+            background:
+                radial-gradient(circle at top right, rgba(24,199,200,0.16), transparent 30%),
+                radial-gradient(circle at bottom left, rgba(255,209,102,0.10), transparent 28%),
+                linear-gradient(135deg, #061827, #0a3448);
+        }
+
+        .page {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .brand {
+            text-align: center;
+            margin-bottom: 18px;
+            color: white;
+        }
+
+        .brand-logo {
+            font-size: 34px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .brand-logo span {
+            color: #18c7c8;
+        }
+
+        .brand-text {
+            margin-top: 6px;
+            color: #c9dde2;
+            font-size: 13px;
         }
 
         .container {
-            max-width: 450px;
-            margin: auto;
-            background: white;
+            background: rgba(255,255,255,0.98);
             padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            box-shadow:
+                0 25px 60px rgba(0,0,0,0.25),
+                0 0 0 1px rgba(255,255,255,0.08);
+        }
+
+        .login-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0b9ca5, #18c7c8);
+            color: white;
+            font-size: 32px;
+            box-shadow: 0 12px 28px rgba(24,199,200,0.25);
         }
 
         h1 {
             text-align: center;
-            color: #7b1e3a;
-            margin-bottom: 10px;
+            color: #073b50;
+            font-size: 28px;
+            margin-bottom: 8px;
         }
 
-        p {
+        .subtitle {
             text-align: center;
-            color: #666;
+            color: #687982;
+            line-height: 1.9;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .error {
+            background: #fff0f0;
+            color: #a61b2b;
+            border: 1px solid #f3c4c9;
+            padding: 14px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
             line-height: 1.8;
+        }
+
+        .error-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .error-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .error-actions a,
+        .error-actions button {
+            margin: 0;
+            text-align: center;
+            padding: 10px;
+            border-radius: 9px;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .retry-link {
+            background: #fff;
+            color: #8b234f;
+            border: 1px solid #d6b4bf;
+            cursor: pointer;
+        }
+
+        .retry-link:hover {
+            background: #fff7f9;
+        }
+
+        .register-error-link {
+            background: #8b234f;
+            color: white;
+        }
+
+        .register-error-link:hover {
+            background: #a72c5d;
+        }
+
+        .field {
+            margin-top: 18px;
         }
 
         label {
             display: block;
-            margin-top: 20px;
             margin-bottom: 8px;
+            color: #173246;
             font-weight: bold;
+            font-size: 14px;
+        }
+
+        .input-wrap {
+            position: relative;
         }
 
         input {
             width: 100%;
-            padding: 12px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            padding: 14px 45px 14px 14px;
+            border: 1px solid #d6e0e5;
+            border-radius: 12px;
             font-size: 15px;
+            background: #fbfdfe;
+            color: #172033;
+            transition: 0.3s;
         }
 
-        button {
+        input:focus {
+            outline: none;
+            border-color: #18c7c8;
+            box-shadow: 0 0 0 4px rgba(24,199,200,0.10);
+            background: white;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+
+        .forgot {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            color: #008c95;
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .forgot:hover {
+            color: #006b72;
+        }
+
+        .login-button {
             width: 100%;
-            padding: 13px;
+            padding: 14px;
             margin-top: 25px;
             border: none;
-            border-radius: 8px;
-            background: #7b1e3a;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #008c95, #18c7c8);
             color: white;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(24,199,200,0.20);
         }
 
-        button:hover {
-            opacity: 0.9;
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(24,199,200,0.30);
         }
 
-        .error {
-            background: #ffe5e5;
-            color: #b00020;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 20px;
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0;
+            color: #9aa8ae;
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e4eaed;
+        }
+
+        .register-box {
             text-align: center;
+            background: #f5fafb;
+            border: 1px solid #dfeff1;
+            padding: 18px;
+            border-radius: 14px;
+        }
+
+        .register-box p {
+            color: #63737c;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .register-link {
+            display: inline-block;
+            color: #8b234f;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 8px 18px;
+            border: 1px solid #d8a7b7;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .register-link:hover {
+            background: #8b234f;
+            color: white;
+        }
+
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #c7dce1;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .home-link:hover {
+            color: white;
+        }
+
+        @media (max-width: 500px) {
+
+            .container {
+                padding: 28px 20px;
+                border-radius: 20px;
+            }
+
+            .brand-logo {
+                font-size: 29px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .error-actions {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="page">
 
-    <h1>ورود دانش‌آموز</h1>
+    <div class="brand">
 
-    <p>
-        برای ورود به سامانه تعیین سطح، نام کاربری و رمز عبور خود را وارد کنید.
-    </p>
-
-    {% if error %}
-        <div class="error">
-            {{ error }}
+        <div class="brand-logo">
+            AI<span>ZAVA</span>
         </div>
-    {% endif %}
 
-    <form method="post">
+        <div class="brand-text">
+            آموزش، آزمون، هوش مصنوعی و خدمات دیجیتال
+        </div>
 
-        {% csrf_token %}
+    </div>
 
-        <label for="username">نام کاربری</label>
-        <input
-            type="text"
-            id="username"
-            name="username"
-            required
-        >
 
-        <label for="password">رمز عبور</label>
-        <input
-            type="password"
-            id="password"
-            name="password"
-            required
-        >
+    <div class="container">
 
-        <button type="submit">
-            ورود به سامانه
-        </button>
+        <div class="login-icon">
+            🔐
+        </div>
 
-    </form>
+        <h1>
+            ورود به حساب کاربری
+        </h1>
+
+        <p class="subtitle">
+            برای ورود به پنل AIZAVA، نام کاربری و رمز عبور خود را وارد کنید.
+        </p>
+
+
+        {% if error %}
+
+            <div class="error">
+
+                <div class="error-title">
+                    ⚠️ اطلاعات ورود صحیح نیست
+                </div>
+
+                <div>
+                    {{ error }}
+                </div>
+
+                <div class="error-actions">
+
+                    <button
+                        type="button"
+                        class="retry-link"
+                        onclick="document.getElementById('username').focus();">
+                        🔄 تلاش دوباره
+                    </button>
+
+                    <a
+                        href="{% url 'register_student' %}"
+                        class="register-error-link">
+                        ✨ ثبت‌نام
+                    </a>
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+
+        <form method="post">
+
+            {% csrf_token %}
+
+
+            <div class="field">
+
+                <label for="username">
+                    نام کاربری
+                </label>
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        👤
+                    </span>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="نام کاربری خود را وارد کنید"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label for="password">
+                    رمز عبور
+                </label>
+
+                <div class="input-wrap">
+
+                    <span class="input-icon">
+                        🔑
+                    </span>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="رمز عبور خود را وارد کنید"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <a
+                    href="{% url 'password_reset_request' %}"
+                    class="forgot">
+                    🔒 رمز عبورم را فراموش کرده‌ام
+                </a>
+
+            </div>
+
+
+            <button type="submit" class="login-button">
+                ورود به حساب
+            </button>
+
+        </form>
+
+
+        <div class="divider">
+            یا
+        </div>
+
+
+        <div class="register-box">
+
+            <p>
+                هنوز در AIZAVA حساب کاربری ندارید؟
+            </p>
+
+            <a
+                href="{% url 'register_student' %}"
+                class="register-link">
+                ✨ ایجاد حساب جدید
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <a href="/" class="home-link">
+        ← بازگشت به صفحه اصلی AIZAVA
+    </a>
 
 </div>
+
 
 </body>
 </html>
