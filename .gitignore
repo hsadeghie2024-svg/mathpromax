@@ -20,3 +20,8 @@ env/
 .DS_Store
 Thumbs.db
 
+
+# Local backups / checkpoints
+*_before_*.sqlite3
+*_checkpoint_*.sqlite3
+students/views_before_*.py
